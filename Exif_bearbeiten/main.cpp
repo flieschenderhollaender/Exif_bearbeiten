@@ -53,24 +53,6 @@ void runMatrixEffect(int durationMs = 5000, int delayMs = 50) {
 // ===========================================================
 
 
-//void printProgressBar(int progress, int total, int width = 20) {
-//    float ratio = static_cast<float>(progress) / total;
-//    int filled = static_cast<int>(ratio * width);
-//
-//    std::cout << "\r8"; // Anfang
-//    for (int i = 0; i < width; ++i) {
-//        if (i < filled)
-//            std::cout << "="; 
-//        else
-//            std::cout << " ";
-//    }
-//    std::cout << "D " << int(ratio * 100) << "%"; // Ende + Prozent
-//    std::cout.flush();
-//
-//	if (progress == total) {
-//        std::cout << std::endl;
-//	}
-//}
 
 int main() {
     ConsoleUtils::setGreenText();
@@ -84,17 +66,17 @@ int main() {
         if (langChoice == "en") {
             ConsoleUtils::setLanguage("en");
             std::cout << "Loading Language." << std::endl;
-            Sleep(3000); // Wartezeit zum lesen.
+            //Sleep(3000); // Wartezeit zum lesen.
             break;
         }
         else if (langChoice == "de") {
             ConsoleUtils::setLanguage("de");
             std::cout << "Sprache wird geladen." << std::endl;
-            Sleep(3000); // Wartezeit zum lesen.
+            //Sleep(3000); // Wartezeit zum lesen.
             break;
         }
         else {
-            std::cout << "Nicht unterstuetztes Sprachformat./Language-Package not availible" << std::endl;
+            std::cout << "Nicht unterstuetztes Sprachformat/Language-Package not availible" << std::endl;
         }
     }
 
@@ -112,13 +94,7 @@ int main() {
         imagePaths.push_back(path);
     }
 
-    /*std::cout << "\n" << ConsoleUtils::getText("processing") << "\n";
-    for (int i = 0; i <= 100; ++i) {
-        printProgressBar(i, 100);
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    }
-    std::cout << std::endl;*/
-
+ 
     int choice;
     do {
         ConsoleUtils::printMenu();
