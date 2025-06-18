@@ -54,8 +54,8 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "change_longitude", "Change Longitude" },
         { "change_latitude", "Change Latitude" },
         { "change_altitude", "Change Altitude" },
-        { "enter_new_longitude", "Enter new Longitude (e.g. 48/1 7/1 30/1 for 48°07´30\"): " },
-        { "enter_new_latitude", "Enter new Latitude (e.g. 48/1 7/1 30/1 for 48°07´30\"): " },
+        { "enter_new_longitude", "Enter new Longitude (e.g. 48/1 7/1 30/1 for 48deg 07min 30sek):" },
+        { "enter_new_latitude", "Enter new Latitude (e.g. 48/1 7/1 30/1 for 48deg 07min 30sek):" },
         { "enter_new_altitude", "Enter new Altitude (e.g. 100 for 100 meters): " },
         { "invalid_number_format", "Invalid number format entered: " },
         { "gps_data_updated_success", "GPS data updated successfully." },
@@ -123,10 +123,10 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "change_longitude", "Laengengrad aendern" },
         { "change_latitude", "Breitengrad aendern" },
         { "change_altitude", "Hoehe aendern" },
-        { "enter_new_longitude", "Neuen Laengengrad eingeben (z.B. 48/1 7/1 30/1 für 48°07´30\"): " },
-        { "enter_new_latitude", "Neuen Breitengrad eingeben (z.B. 48/1 7/1 30/1 für 48°07´30\"): " },
-        { "enter_new_altitude", "Neue Höhe eingeben (z.B. 100 für 100 Meter): " },
-        { "invalid_number_format", "Ungültiges Zahlenformat eingegeben: " },
+        { "enter_new_longitude", "Neuen Laengengrad eingeben (z.B. 48/1 7/1 30/1 für 48deg 07min 30sek):" },
+        { "enter_new_latitude", "Neuen Breitengrad eingeben (z.B. 48/1 7/1 30/1 für 48deg 07min 30sek):" },
+        { "enter_new_altitude", "Neue Hoehe eingeben (z.B. 100 für 100 Meter): " },
+        { "invalid_number_format", "Ungueltiges Zahlenformat eingegeben: " },
         { "gps_data_updated_success", "GPS-Daten erfolgreich aktualisiert." },
         { "current_datetime", "Aktuelles Datum/Uhrzeit" },
         { "no_datetime_found", "Keine Datum/Uhrzeit-Daten in den Metadaten gefunden." },
@@ -166,6 +166,7 @@ void ConsoleUtils::setGreenText() {
 #endif
 }
 
+/*
 void ConsoleUtils::resetTextColor() {
 #ifdef _WIN32
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -174,6 +175,7 @@ void ConsoleUtils::resetTextColor() {
     std::cout << "\033[0m"; // ANSI escape code to reset text color
 #endif
 }
+*/
 
 void ConsoleUtils::setLanguage(const std::string& language) {
 	if (translations.count(language) > 0) {
@@ -225,5 +227,5 @@ void ConsoleUtils::printMenu() {
     std::cout << getText("datetime") << std::endl;
 	std::cout << getText("remove_all") << std::endl;
     std::cout << getText("0. Exit / Beenden") << std::endl;
-    resetTextColor();
+    //resetTextColor();
 }

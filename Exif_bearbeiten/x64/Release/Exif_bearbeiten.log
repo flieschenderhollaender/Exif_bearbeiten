@@ -1,0 +1,14 @@
+﻿  ConsoleMenue.cpp
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(57,97): error C3329: syntax error: expected '}' not ')'
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(57,98): error C2059: syntax error: ':'
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(57,100): error C2001: newline in constant
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(58,9): error C2143: syntax error: missing ';' before '{'
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(58,9): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(58,98): error C2001: newline in constant
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(85,6): error C2059: syntax error: '}'
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(85,6): error C2143: syntax error: missing ';' before '}'
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(86,5): error C2143: syntax error: missing ';' before '{'
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(86,5): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(126,108): error C2001: newline in constant
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(127,107): error C2001: newline in constant
+C:\Users\paul\source\repos\Exif_bearbeiten\Exif_bearbeiten\ConsoleMenue.cpp(232,1): error C1004: unexpected end-of-file found

@@ -52,7 +52,15 @@ void runMatrixEffect(int durationMs = 5000, int delayMs = 50) {
 }
 // ===========================================================
 
-
+// Hilfsfunktion zum Entfernen von Anführungszeichen am Anfang und Ende
+std::string trimQuotes(const std::string& str) {
+    if (str.length() >= 2 &&
+        ((str.front() == '"' && str.back() == '"') ||
+         (str.front() == '\'' && str.back() == '\''))) {
+        return str.substr(1, str.length() - 2);
+    }
+    return str;
+}
 
 int main() {
     ConsoleUtils::setGreenText();
@@ -88,15 +96,19 @@ int main() {
     std::vector<std::string> imagePaths;
     std::string path;
     std::cout << ConsoleUtils::getText("enterPaths") << "\n";
-    while (true) {
-        std::getline(std::cin, path);
-        if (path.empty()) break;
-        imagePaths.push_back(path);
+    while (true) {                      
+		std::getline(std::cin, path);               // Eingabe der Dateipfade
+		if (path.empty()) break;                    // Beenden, wenn eine leere Zeile eingegeben wird
+		imagePaths.push_back(trimQuotes(path));     //Übergabe fuer Anführungszeichen loeschen
     }
 
- 
+    
+
+	system("cls");  // Bildschirm löschen
+
     int choice;
     do {
+        ConsoleUtils::setGreenText();
         ConsoleUtils::printMenu();
         std::cin >> choice;
         std::cin.ignore();
@@ -152,6 +164,5 @@ int main() {
         }
     } while (choice != 0);
 
-    ConsoleUtils::resetTextColor();
     return 0;
 }

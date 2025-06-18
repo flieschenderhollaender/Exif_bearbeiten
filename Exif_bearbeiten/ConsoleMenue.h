@@ -11,7 +11,7 @@ class ConsoleUtils
 {
 public:
     static void setGreenText();
-    static void resetTextColor();
+    //static void resetTextColor();
     static void printMenu();
     static void setLanguage(const std::string& language);
     static std::string getText(const std::string& key);
