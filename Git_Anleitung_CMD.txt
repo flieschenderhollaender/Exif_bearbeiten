@@ -1,0 +1,17 @@
+Da Alle Daten mit [git add .] zu groß sind sollten nur Ausgewählte daten hochgeladen werden.
+
+Befehle:
+
+cd C:\Users\user\source\repos\Exif_bearbeiten  (ggf. Anpassen) //in das repo navigieren
+
+git add . //Alles Auswählen (Daten wahrscheinlich zugroß)
+
+git add Exif_bearbeiten/   //um nur diesen ordner zuwählen
+
+git commit -m "beschreibung"	//Daten estätigen, beschreiben und zusammen fügen
+
+git push  //daten hochladen
+
+ggf. //fals Probleme mit nur [git push]
+
+git push origin main
