@@ -12,14 +12,17 @@
 // Initialisiert die Standardsprache auf Englisch
 std::string ConsoleUtils::lang = "en";
 
-// Sprachdatenbank: Eine Map, die Sprachen auf Maps von Schlüsseln zu übersetzten Texten abbildet.
+// Sprachdatenbank: Je nachdem welche Sprache am Anfang gesetzt wurde, werden die entsprechenden Texte geladen, sollten neue Funktionen
+// hinzugefügt werden, müssen diese hier auch in die Datenbank eingetragen werden ( in der Funktion steht ein Schlüsselwort, welches dann in der Funktion getText() verwendet wird, um den Text zu laden )
+// andere Sprachen einfach un beliebig hinzufügen, die Struktur bleibt gleich, nur die Texte müssen übersetzt werden.
 static const std::unordered_map<std::string, std::unordered_map<std::string, std::string>> translations = {
     { "en", {
+		// Begrüßungstext und Menüoptionen auf Englisch
         { "welcome", "Welcome to the Exif Manipulator!" },
         { "choose_option", "Please choose an option:" },
         { "read_exif", "1. Read Exif Data" },
         { "write_exif", "2. Write Camera Model" },
-        { "delete_exif", "3. Write GPS Data" }, // Geändert von "delete_exif" zu "write_gps"
+        { "delete_exif", "3. Write GPS Data" }, 
         { "optical", "4. Change Optical Info" },
         { "datetime", "5. Change Date/Time" },
         { "remove_all", "6. Delete all Exif Data" },
@@ -29,7 +32,7 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "fileExists", "File exists: " },
         { "fileNotFound", "File not found: " },
 
-        // Neue Schlüssel für Auslesen_Schreiben.cpp
+        // für Auslesen_Schreiben.cpp
         { "exiv2_open_error", "Error: Could not open file with Exiv2 or it's not a valid image format: " },
         { "no_exif_data", "No Exif data found in file: " },
         { "exif_data_for", "Exif data for " },
@@ -84,11 +87,12 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "all_exif_data_deleted_success", "All Exif data deleted successfully." }
     }},
     { "de", {
+		// Begrüßungstext und Menüoptionen auf Deutsch
         { "welcome", "Willkommen beim Exif-Manipulator!" },
         { "choose_option", "Bitte waehlen Sie eine Option:" },
         { "read_exif", "1. Exif-Daten auslesen" },
         { "write_exif", "2. Kameramodell schreiben" },
-        { "delete_exif", "3. GPS-Daten schreiben" }, // Geändert von "delete_exif" zu "write_gps"
+        { "delete_exif", "3. GPS-Daten schreiben" }, 
         { "optical", "4. Optische Daten aendern" },
         { "datetime", "5. Datum/Uhrzeit aendern" },
         { "remove_all", "6. Alle Exif-Daten loeschen" },
@@ -98,7 +102,7 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "fileExists", "Datei existiert: " },
         { "fileNotFound", "Datei nicht gefunden: " },
 
-        // Neue Schlüssel für Auslesen_Schreiben.cpp
+        // für Auslesen_Schreiben.cpp
         { "exiv2_open_error", "Fehler: Datei konnte mit Exiv2 nicht geoeffnet werden oder ist kein gueltiges Bildformat: " },
         { "no_exif_data", "Keine Exif-Daten in der Datei gefunden: " },
         { "exif_data_for", "Exif-Daten fuer " },
@@ -159,65 +163,46 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
 
 void ConsoleUtils::setGreenText() {
 #ifdef _WIN32
+    //grüne Farbe für Windows
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 #else
-    std::cout << "\033[32m"; // ANSI escape code for green text
+	//grüne Farbe für Linux/Mac
+    std::cout << "\033[32m"; 
 #endif
 }
-
-/*
-void ConsoleUtils::resetTextColor() {
-#ifdef _WIN32
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, 7); // Reset to default color
-#else
-    std::cout << "\033[0m"; // ANSI escape code to reset text color
-#endif
-}
-*/
 
 void ConsoleUtils::setLanguage(const std::string& language) {
+	//Prüft, ob Sprache in Sprachdatenbank vorhanden ist
 	if (translations.count(language) > 0) {
-		lang = language;
+		lang = language; // wenn ja, wird die Sprache gesetzt
 	}
 	else {
+        // Wenn nicht unterstützt, wird Sprache auf Englisch gesetzt
 		std::cerr << "Unsupported language: " << language << std::endl;
-		lang = "en"; // Fallback to English if unsupported language is provided
+		lang = "en";
 	}
 }
 
 
 std::string ConsoleUtils::getText(const std::string& key) {
-    /*static const std::unordered_map<std::string, std::pair<std::string, std::string>> texts = {
-        {"menuTitle", {"--- Exif-Bildbearbeitung ---", "--- Exif Image Editor ---"}},
-        {"menu1", {"1. Exif-Daten anzeigen", "1. Show Exif Data"}},
-        {"menu2", {"2. Hersteller und Kameramodell aendern", "2. Change manufactorer and camera model"}},
-        {"menu3", {"3. GPS Informationen aendern", "3. Change GPS Information"}},
-        {"menu4", {"4.  Optische Informationen aendern (Blende, ISO, Belichtungszeit,Brennweite)", "4. Change Optical Information (Aperture, ISO, Exposure Time,Focal Lenght)" }},
-        {"menu5", {"5. Datum und Uhrzeit aendern", "5. Change Date and Time information"}},
-        {"menu6", {"6. Alle Exif-Daten loeschen", "Delete all Exif information",}},
-        {"menu10", {"Witz am Rande: Exif-Daten sind wie ein gutes Geheimnis - sie sollten nicht zu leicht zu finden sein!", "Joke on the side: Exif data is like a good secret - it shouldn't be too easy to find!"}},
-        {"menu0", {"0. Beenden", "0. Exit"}},
-        {"invalid", {"Ungueltige Eingabe.", "Invalid input."}},
-        {"exit", {"Beenden...", "Exiting..."}},
-        {"enterPaths", {"Bildpfade eingeben (mit Enter bestätigen, leer zum Beenden):",
-                         "Enter image paths (press Enter after each, empty to finish):"}}
-    };*/
+
+	// Sucht den Text in der Sprachdatenbank anhand des Schlüsselwortes
 	auto langMapIt = translations.find(lang);
 	if (langMapIt == translations.end()) {
-		return key; // Fallback to key if language not found
+		return key; //Wenn Sprache nicht gefunden, wird der Schlüssel zurückgegeben
 	}
-	const auto& texts = langMapIt->second;
+	const auto& texts = langMapIt->second; // Sucht die Texte für die aktuelle Sprache
 	auto textIt = texts.find(key);
 	if (textIt != texts.end()) {
-		return textIt->second;
+		return textIt->second; // Wenn der Text gefunden wird, wird er zurückgegeben
 	}
-	return key; // Fallback to key if text not found
+	return key; // Wenn der Text nicht gefunden wird, wird der Schlüssel zurückgegeben 
 }
 
 void ConsoleUtils::printMenu() {
-    std::cout << std::endl;
+	std::cout << std::endl; // Fügt eine Leerzeile zur Übersichtlichkeit ein
+	//Verwendet die getText-Funktion, um die Texte aus der Sprachdatenbank zu laden
     std::cout << getText("welcome") << std::endl;
     std::cout << getText("choose_option") << std::endl;
     std::cout << getText("read_exif") << std::endl;
@@ -227,5 +212,4 @@ void ConsoleUtils::printMenu() {
     std::cout << getText("datetime") << std::endl;
 	std::cout << getText("remove_all") << std::endl;
     std::cout << getText("0. Exit / Beenden") << std::endl;
-    //resetTextColor();
 }
