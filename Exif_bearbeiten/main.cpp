@@ -28,7 +28,7 @@ void hideCursor(bool hide) {
 
 //Hauptfunktion des Matrix-Effektes
 //Zeichen werden in zufälligen y-Positionen von oben nach unten bewegt
-void runMatrixEffect(int durationMs = 5000, int delayMs = 50) {
+void runMatrixEffect(int durationMs = 3000, int delayMs = 50) {
     const int width = 100;
     const int height = 50;
     //speichert aktuelle y-Positionen der Zeichen
@@ -98,7 +98,7 @@ int main() {
         else if (langChoice == "de") {
             ConsoleUtils::setLanguage("de"); //setzt Sprache auf Deutsch
             std::cout << "Sprache wird geladen..." << std::endl;
-            Sleep(3000); // Wartezeit zum lesen von "Sprache wird geladen..."
+            Sleep(1500); // Wartezeit zum lesen von "Sprache wird geladen..."
             break;
         }
         else {
@@ -118,14 +118,18 @@ int main() {
     std::cout << ConsoleUtils::getText("enterPaths") << "\n";
     // Eingabe der Bildpfade, solange bis eine leere Zeile eingegeben wird
     while (true) {                      
-		std::getline(std::cin, path);               // Eingabe der Dateipfade
-		if (path.empty()) break;                    // Beenden, wenn eine leere Zeile eingegeben wird
-		imagePaths.push_back(trimQuotes(path));     //Übergabe fuer Anführungszeichen loeschen
+        std::getline(std::cin, path);               // Eingabe der Dateipfade
+        if (path.empty()) break;                    // Beenden, wenn eine leere Zeile eingegeben wird
+        imagePaths.push_back(trimQuotes(path));     //Übergabe fuer Anführungszeichen loeschen
     }
 
-    
+    // Prüfen, ob mindestens ein Pfad eingegeben wurde
+    if (imagePaths.empty()) {
+        std::cout << "Es wurde kein Pfad eingegeben! / No path was entered!" << std::endl;
+        return 1; // Programm mit Fehlercode beenden
+    }
 
-	system("cls");  // Bildschirm löschen
+    system("cls");  // Bildschirm löschen
 
     int choice; // Variable für Menüauswahl
 

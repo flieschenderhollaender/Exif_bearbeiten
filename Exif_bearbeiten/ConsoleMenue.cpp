@@ -107,7 +107,7 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "no_exif_data", "Keine Exif-Daten in der Datei gefunden: " },
         { "exif_data_for", "Exif-Daten fuer " },
         { "exiv2_read_error", "Exiv2 Fehler beim Auslesen der Exif-Daten für " },
-        { "general_read_error", "Allgemeiner Fehler beim Auslesen der Exif-Daten für " },
+        { "general_read_error", "Allgemeiner Fehler beim Auslesen der Exif-Daten fuer " },
         { "enter_manufacturer", "Bitte geben Sie den Hersteller ein: " },
         { "no_manufacturer_entered", "Kein Hersteller eingegeben." },
         { "enter_model", "Bitte geben Sie das Modell ein: " },
@@ -154,7 +154,7 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "enter_new_shutterspeed", "Neue Belichtungszeit eingeben (z.B. 1/125 für 1/125 Sekunden): " },
         { "enter_new_iso", "Neue ISO eingeben (z.B. 100): " },
         { "enter_new_shutterspeed", "Neue Belichtungszeit eingeben (z.B. 1/125 für 1/125 Sekunden): " },
-        { "enter_new_focal_length", "Neue Brennweite eingeben (z.B. 50 für 50mm): " },
+        { "enter_new_focal_length", "Neue Brennweite eingeben (z.B. 50 fuer 50mm): " },
         { "optical_data_updated_success", "Optische Daten erfolgreich aktualisiert." },
         { "all_exif_data_deleted_success", "Alle Exif-Daten erfolgreich geloescht." }
     }}
