@@ -31,6 +31,7 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "enterPaths", "Enter image paths (empty line to finish):" },
         { "fileExists", "File exists: " },
         { "fileNotFound", "File not found: " },
+        { "fileProcessing", "Process File: "},
 
         // für Auslesen_Schreiben.cpp
         { "exiv2_open_error", "Error: Could not open file with Exiv2 or it's not a valid image format: " },
@@ -101,6 +102,7 @@ static const std::unordered_map<std::string, std::unordered_map<std::string, std
         { "enterPaths", "Bitte Bildpfade eingeben (Leere Zeile zum Beenden):" },
         { "fileExists", "Datei existiert: " },
         { "fileNotFound", "Datei nicht gefunden: " },
+		{ "fileProcessing", "Verarbeite Datei: "},
 
         // für Auslesen_Schreiben.cpp
         { "exiv2_open_error", "Fehler: Datei konnte mit Exiv2 nicht geoeffnet werden oder ist kein gueltiges Bildformat: " },

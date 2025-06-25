@@ -84,7 +84,7 @@ void ChangeCameraModel(const std::string& filename) { // Funktion zum Ändern des
 
 void ChangeGPSData(const std::string& filename) { // Funktion zum Ändern der GPS-Daten in den EXIF-Daten samt Formaleingabeparameter filename
 	try {
-		std::unique_ptr<Exiv2::Image> image = Exiv2::ImageFactory::open(filename); ^// Öffnen des Bildes mit Exiv2
+		std::unique_ptr<Exiv2::Image> image = Exiv2::ImageFactory::open(filename); // Öffnen des Bildes mit Exiv2
 		if (!image) { // Überprüfen, ob EXIF-Daten vorhanden sind
 			std::cerr << ConsoleUtils::getText("exiv2_open_error") << filename << std::endl;
 			return;
@@ -267,7 +267,7 @@ void ChangeOpticalData(const std::string& filename) {// Funktion zum Ändern der 
 		if (changeBlende) {
 			std::cout << ConsoleUtils::getText("enter_new_f_number");
 			std::string NewFNumber;
-			std::getline(std::cin, NewFNumber); `/ / Eingabeaufforderung für die neue Blende
+			std::getline(std::cin, NewFNumber); // Eingabeaufforderung für die neue Blende
 			try {
 				float fnumberFloat = std::stof(NewFNumber);
 				exifData["Exif.Photo.FNumber"] = Exiv2::Rational(static_cast<long>(fnumberFloat * 100), 100);// Umwandlung der Blende in einen rationalen Wert

@@ -150,7 +150,7 @@ int main() {
         case 1:
             // Zeigt die EXIF-Daten für alle eingegebenen Bildpfade an
             for (const auto& path : imagePaths) {
-                std::cout << "Verarbeite Datei: " << path << std::endl;
+                std::cout << ConsoleUtils::getText("fileProcessing") << path << std::endl;
                 showEXif(path);
             }
             break;
@@ -158,7 +158,7 @@ int main() {
         case 2:
             // Ändert das Kameramodell für alle eingegebenen Bildpfade
             for (const auto& path : imagePaths) {
-                std::cout << "Verarbeite Datei: " << path << std::endl;
+                std::cout << ConsoleUtils::getText("fileProcessing") << path << std::endl;
                 ChangeCameraModel(path);
             }
             break;
@@ -166,7 +166,7 @@ int main() {
         case 3:
             // Ändert die GPS-Daten für alle eingegebenen Bildpfade
             for (const auto& path : imagePaths) {
-                std::cout << "Verarbeite Datei: " << path << std::endl;
+                std::cout << ConsoleUtils::getText("fileProcessing") << path << std::endl;
                 ChangeGPSData(path);
             }
             break;
@@ -174,7 +174,7 @@ int main() {
         case 4:
             // Ändert die optischen Daten für alle eingegebenen Bildpfade
             for (const auto& path : imagePaths) {
-                std::cout << "Verarbeite Datei: " << path << std::endl;
+                std::cout << ConsoleUtils::getText("fileProcessing") << path << std::endl;
                 ChangeOpticalData(path);
             }
             break;
@@ -182,7 +182,7 @@ int main() {
         case 5:
             // Ändert das Aufnahmedatum für alle eingegebenen Bildpfade
             for (const auto& path : imagePaths) {
-                std::cout << "Verarbeite Datei: " << path << std::endl;
+                std::cout << ConsoleUtils::getText("fileProcessing") << path << std::endl;
                 ChangeDateTime(path);
             }
             break;
@@ -190,7 +190,7 @@ int main() {
         case 6:
             // Löscht alle EXIF-Daten für alle eingegebenen Bildpfade
             for (const auto& path : imagePaths) {
-                std::cout << "Verarbeite Datei: " << path << std::endl;
+                std::cout << ConsoleUtils::getText("fileProcessing") << path << std::endl;
                 DeleteAllExifData(path);
             }
             break;
